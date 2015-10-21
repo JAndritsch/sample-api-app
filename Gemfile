@@ -7,7 +7,7 @@ gem 'mysql2', '~> 0.3.18'
 
 gem 'spring', :group => :development
 gem 'rspec-rails', :group => [:development, :test]
-
+gem 'shoulda-matchers', :group => [:development, :test]
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
