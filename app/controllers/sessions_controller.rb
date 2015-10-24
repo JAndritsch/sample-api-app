@@ -1,7 +1,5 @@
 class SessionsController < ApplicationController
 
-  before_filter :authenticate!, only: [:destroy]
-
   def create
     user = User.find_by(username: params[:username])
     authenticator = UserAuthenticator.new(user)
@@ -15,9 +13,9 @@ class SessionsController < ApplicationController
 
   def destroy
     lookup_user do |user|
-      user.remove_auth_token!
+      user.remove_auth_token! if user
     end
-    head :ok
+    head :no_content
   end
 
 end
