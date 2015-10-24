@@ -17,8 +17,12 @@ ActiveRecord::Schema.define(version: 20151021002054) do
     t.string   "username",   limit: 255
     t.string   "password",   limit: 255
     t.string   "auth_token", limit: 255
+    t.string   "salt",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "users", ["auth_token"], name: "index_users_on_auth_token", unique: true, using: :btree
+  add_index "users", ["salt"], name: "index_users_on_salt", unique: true, using: :btree
 
 end
