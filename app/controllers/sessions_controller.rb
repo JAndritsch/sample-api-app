@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     authenticator = UserAuthenticator.new(user)
     if authenticator.valid_password?(params[:password])
       user.generate_auth_token!
-      render json: { auth_token: user.auth_token }
+      render json: { auth_token: user.auth_token }, status: :created
     else
       head :unauthorized
     end
